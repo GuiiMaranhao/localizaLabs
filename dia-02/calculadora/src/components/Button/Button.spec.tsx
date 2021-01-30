@@ -5,12 +5,20 @@ describe('<Button>', () => {
     it('should execute function in the onClick event', () => {
         const handleOnClick = jest.fn();
 
-        render(<Button onClick={handleOnClick} />);
+        render(<Button label="test-label" onClick={handleOnClick} />);
 
-        const button = screen.getByText('button');
+        const button = screen.getByText('test-label');
 
         fireEvent.click(button)
 
-        screen.debug();
+        expect(handleOnClick).toBeCalled();
+    });
+
+    it('should display the icon without a button', () => {
+        const handleOnClick = jest.fn();
+
+        render(<Button label="test-label" onClick={handleOnClick} icon="icon-test" />);
+
+        screen.getByText('icon-test');
     });
 });

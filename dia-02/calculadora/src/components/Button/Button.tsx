@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { IProps } from './types';
 
-const Button = () => {
+import { ButtonContainer } from './styles'
+
+const Button: FC<IProps> = ({ 
+    label,
+    backgroundColor,
+    color,
+    icon,
+    onClick
+}) => {
     return (
-        <button>
-            button
-        </button>
+        <ButtonContainer 
+            onClick={onClick}
+            backgroundColor={backgroundColor}
+            color={color}
+        >
+            {icon && <i>{icon}</i>}
+            {label}
+        </ButtonContainer>
     )
 }
 
